@@ -17,7 +17,6 @@
 //
 // What is the sum of all of the calibration values?
 
-
 use regex::Regex;
 
 fn main() {
