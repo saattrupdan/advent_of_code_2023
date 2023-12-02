@@ -17,6 +17,7 @@
 
 use std::str::Chars;
 
+
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day1.txt");
@@ -49,6 +50,7 @@ fn main() {
         // Concatenate the two digits together
         let number = first_digit * 10 + last_digit;
 
+        // Add the number to the total
         answer += number;
     }
 

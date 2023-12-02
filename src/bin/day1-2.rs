@@ -19,6 +19,7 @@
 
 use regex::Regex;
 
+
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day1.txt");
