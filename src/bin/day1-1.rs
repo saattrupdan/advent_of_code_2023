@@ -18,7 +18,6 @@
 use std::str::Chars;
 
 fn main() {
-    // Read in the data file
     let data = include_str!("../../data/day1.txt");
 
     // Loop through each line of the data file

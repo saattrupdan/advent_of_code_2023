@@ -29,7 +29,6 @@
 use regex::Regex;
 
 fn main() {
-    // Read in the data file
     let data = include_str!("../../data/day3.txt");
 
     // Create a regex to match the special characters

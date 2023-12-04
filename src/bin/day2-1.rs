@@ -39,7 +39,6 @@
 use std::collections::HashMap;
 
 fn main() {
-    // Read in the data file
     let data = include_str!("../../data/day2.txt");
 
     let mut max_cubes: HashMap<&str, i32> = HashMap::new();

@@ -20,7 +20,6 @@
 use regex::Regex;
 
 fn main() {
-    // Read in the data file
     let data = include_str!("../../data/day1.txt");
 
     // Regex that checks if a string starts with a digit or a digit word
