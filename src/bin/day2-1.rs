@@ -38,7 +38,6 @@
 
 use std::collections::HashMap;
 
-
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day2.txt");

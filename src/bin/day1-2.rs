@@ -19,36 +19,29 @@
 
 use regex::Regex;
 
-
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day1.txt");
 
     // Regex that checks if a string starts with a digit or a digit word
-    let re = Regex::new(
-        r"^(\d|one|two|three|four|five|six|seven|eight|nine)"
-    ).unwrap();
+    let re = Regex::new(r"^(\d|one|two|three|four|five|six|seven|eight|nine)").unwrap();
 
     // Loop through each line of the data file
     let mut answer = 0;
     for line in data.lines() {
-
         let mut first_digit = -1;
         let mut last_digit = -1;
 
         // Loop over a range of numbers from 0 to the length of the line
         for index in 0..line.len() {
-
             let truncated_line: &str = &line[index..];
 
             if re.is_match(truncated_line) {
-
                 // Extract matched string
                 let matched_str = re.find(truncated_line).unwrap().as_str();
 
                 // Replace the matched string with the digit
-                let replaced_str =
-                    matched_str
+                let replaced_str = matched_str
                     .replace("one", "1")
                     .replace("two", "2")
                     .replace("three", "3")

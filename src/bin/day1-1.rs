@@ -17,7 +17,6 @@
 
 use std::str::Chars;
 
-
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day1.txt");
@@ -25,7 +24,6 @@ fn main() {
     // Loop through each line of the data file
     let mut answer = 0;
     for line in data.lines() {
-
         // Convert the line to a vector of characters
         let characters: Chars = line.chars();
 

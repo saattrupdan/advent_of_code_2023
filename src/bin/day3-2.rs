@@ -26,7 +26,6 @@
 
 use regex::Regex;
 
-
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day3.txt");
@@ -41,7 +40,6 @@ fn main() {
     let mut answer: i32 = 0;
 
     for (line_idx, line) in data.lines().enumerate() {
-
         // Get the previous and next lines
         if line_idx == 0 {
             prev_line = ""
@@ -56,10 +54,9 @@ fn main() {
             for some_line in [prev_line, line, next_line].iter() {
                 for number_match in number_regex.find_iter(some_line) {
                     if gear_match.start() + 1 >= number_match.start()
-                        && gear_match.start() - 1 < number_match.end() {
-                        number_matches.push(
-                            number_match.as_str().parse::<i32>().unwrap()
-                        );
+                        && gear_match.start() - 1 < number_match.end()
+                    {
+                        number_matches.push(number_match.as_str().parse::<i32>().unwrap());
                     }
                 }
             }
@@ -67,7 +64,6 @@ fn main() {
             if number_matches.len() == 2 {
                 answer += number_matches[0] * number_matches[1];
             }
-
         }
     }
 

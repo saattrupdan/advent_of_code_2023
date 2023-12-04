@@ -28,7 +28,6 @@
 
 use regex::Regex;
 
-
 fn main() {
     // Read in the data file
     let data = include_str!("../../data/day3.txt");
@@ -57,12 +56,18 @@ fn main() {
         next_line = data.lines().nth(line_idx + 1).unwrap_or("");
 
         // Get the indices of all the special characters in the three lines
-        prev_symbol_indices =
-            special_character_regex.find_iter(prev_line).map(|m| m.start()).collect();
-        current_symbol_indices =
-            special_character_regex.find_iter(line).map(|m| m.start()).collect();
-        next_symbol_indices =
-            special_character_regex.find_iter(next_line).map(|m| m.start()).collect();
+        prev_symbol_indices = special_character_regex
+            .find_iter(prev_line)
+            .map(|m| m.start())
+            .collect();
+        current_symbol_indices = special_character_regex
+            .find_iter(line)
+            .map(|m| m.start())
+            .collect();
+        next_symbol_indices = special_character_regex
+            .find_iter(next_line)
+            .map(|m| m.start())
+            .collect();
 
         // Get the indices of all characters in the current line which are adjacent to a
         // special character on any of the three lines, including diagonally
@@ -76,11 +81,12 @@ fn main() {
         indices.extend(next_symbol_indices.iter().map(|&i| i + 1));
 
         for number_match in number_regex.find_iter(line) {
-
             // Check if any of the `indices` occur within the range of the current number
-            let indices_in_number: Vec<usize> = indices.iter().filter(|&&i| {
-                i >= number_match.start() && i < number_match.end()
-            }).map(|&i| i).collect();
+            let indices_in_number: Vec<usize> = indices
+                .iter()
+                .filter(|&&i| i >= number_match.start() && i < number_match.end())
+                .map(|&i| i)
+                .collect();
 
             // If there are any indices in the number, add the number to the answer
             if indices_in_number.len() > 0 {
