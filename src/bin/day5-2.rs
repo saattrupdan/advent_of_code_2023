@@ -23,8 +23,8 @@
 // the almanac. What is the lowest location number that corresponds to any of the
 // initial seed numbers?
 
-use regex::Regex;
-use std::collections::HashMap;
+// use regex::Regex;
+// use std::collections::HashMap;
 
 // Doesn't work yet
 fn main() {
