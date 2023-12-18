@@ -96,6 +96,34 @@
 // the sum of these extrapolated values?
 
 fn main() {
-    // let data = include_str!("../../data/day9.txt");
-    // println!("The answer for the first task is: {}", answer);
+    let data = include_str!("../../data/day9.txt");
+
+    // Parse data
+    let histories = data
+        .lines()
+        .map(|line| {
+            line.split(" ")
+                .map(|n| n.parse::<i64>().unwrap())
+                .collect::<Vec<i64>>()
+        })
+        .into_iter();
+
+    let mut residuals: Vec<i64>;
+    let mut extrapolated: i64;
+    let mut answer = 0;
+
+    for history in histories {
+        residuals = history.clone();
+        extrapolated = 0;
+        while residuals.iter().any(|&n| n != 0) {
+            extrapolated += residuals[residuals.len() - 1];
+            residuals = residuals
+                .windows(2)
+                .map(|window| window[1] - window[0])
+                .collect::<Vec<i64>>();
+        }
+        answer += extrapolated;
+    }
+
+    println!("The answer for the first task is: {}", answer);
 }
