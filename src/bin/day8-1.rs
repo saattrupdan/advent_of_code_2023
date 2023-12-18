@@ -46,7 +46,43 @@
 // Starting at AAA, follow the left/right instructions. How many steps are required to
 // reach ZZZ?
 
+use std::{collections::HashMap, str::Split};
+
 fn main() {
-    // let data = include_str!("../../data/day8.txt");
-    // println!("The answer for the first task is: {}", answer);
+    let data = include_str!("../../data/day8.txt");
+
+    let mut split: Split<&str>;
+    let mut key: &str;
+    let mut value: Vec<&str>;
+    let mut map = HashMap::new();
+
+    // Parse data
+    let instructions = data.lines().next().unwrap();
+    for line in data.lines().skip(2) {
+        split = line.split(" = ");
+        key = split.next().unwrap();
+        value = split
+            .next()
+            .unwrap()
+            .trim_matches(|c| c == '(' || c == ')')
+            .split(", ")
+            .collect::<Vec<_>>();
+        map.insert(key, value);
+    }
+
+    let mut active_node = "AAA";
+    let mut answer = 0;
+    for instruction in instructions.chars().cycle() {
+        match instruction {
+            'L' => active_node = map.get(active_node).unwrap()[0],
+            'R' => active_node = map.get(active_node).unwrap()[1],
+            _ => panic!("Unknown instruction"),
+        }
+        answer += 1;
+        if active_node == "ZZZ" {
+            break;
+        }
+    }
+
+    println!("The answer for the first task is: {}", answer);
 }
