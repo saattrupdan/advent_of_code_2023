@@ -4,8 +4,10 @@ These are my Rust solutions for the 2023 edition of [Advent of
 Code](https://adventofcode.com/2023).
 
 To run them firstly ensure that [Rust is
-installed](https://www.rust-lang.org/tools/install), after which you can run the
-command
+installed](https://www.rust-lang.org/tools/install), after which you can install the
+project with a simple `make install`.
+
+After the project is installed, you can run the solutions with the command
 
 ```
 cargo run --bin dayX-Y
